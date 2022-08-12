@@ -1,11 +1,26 @@
 *{
-    margin: 1;
+    margin: 0;
     padding: 0;
-    overflow: hidden;
+    font-family: 'Silkscreen', cursive;
 }
 
-canvas {
-    background-color: #6e6e6e;
-    height: 100%;
-    width: 100%;
+
+.canvas {
+    justify-content: center;
+    display: flex;
+    background-color:rgb(100, 100, 100);
 }
+
+#left-side {
+    background-color: aqua;
+    color:white;
+    padding: 5px 5px;
+}
+
+#right-side {
+   background-color: aqua;
+    color: white;
+    padding: 5px 5px;
+
+}
+
