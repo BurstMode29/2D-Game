@@ -2,13 +2,13 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
-canvas.width = 1080
+canvas.width = 800
 canvas.height = 700
+
 
 ctx.fillRect(0, 0, canvas.width, canvas.height)
 
 const gravity = 1
-
 
 //space background
 const background = new Sprite({
@@ -28,6 +28,19 @@ var vortex = new Sprite({
     imageSrc: './img/vortex.png',
     scale: 2,
     framesMax: 8
+})
+
+
+var obsticale = new Obstical({
+    position: {
+        x:200,
+        y:200
+    },
+
+    velocity: {
+        x: 0,
+        y: 0
+    },
 })
 
 
@@ -54,6 +67,8 @@ function animate() {
     background.update()
     vortex.update()
     player.update()
+    obsticale.update()
+    
    
 
    

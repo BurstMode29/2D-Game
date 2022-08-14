@@ -2,25 +2,33 @@
     margin: 0;
     padding: 0;
     font-family: 'Silkscreen', cursive;
+    overflow:unset;
 }
 
-
 .canvas {
+    flex-shrink: 0;
     justify-content: center;
     display: flex;
     background-color:rgb(100, 100, 100);
 }
 
 #left-side {
-    background-color: aqua;
+    background-image: url(/img/Window.png);
+    background-size: contain;
+    background-repeat: no-repeat;
     color:white;
-    padding: 5px 5px;
+    padding: 30vw 10vw;
 }
 
 #right-side {
-   background-color: aqua;
+    background-image: url(/img/Window.png);
+    background-size: contain;
+    background-repeat: no-repeat;
     color: white;
-    padding: 5px 5px;
+    padding: 30vw 10vw;
+}
 
+::-webkit-scrollbar {
+    display: none;
 }
 

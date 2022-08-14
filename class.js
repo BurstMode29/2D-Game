@@ -45,6 +45,36 @@ class Sprite {
     }
 }
 
+
+// Obstical 
+
+class Obstical {
+    constructor({position, velocity}) {
+        this.position = position
+        this.velocity = velocity
+        this.height = 100
+        this.width = 100
+    }
+
+    draw() {
+
+            ctx.fillStyle = 'red'
+            ctx.fillRect(this.position.x, this.position.y, 50, this.height)
+        }
+
+    update() {
+        this.draw()
+
+        this.position.x += this.velocity.x
+        this.position.y += this.velocity.y
+        
+        if (this.position.y + this.height + this.velocity.y >= canvas.height) {
+            this.velocity.y = 0
+        } 
+    }
+}
+
+
 // Player Object
 class Player {
     constructor({position, velocity}) {
