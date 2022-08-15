@@ -13,11 +13,12 @@
 }
 
 #left-side {
+    flex-shrink: 0;
     background-image: url(/img/Window.png);
     background-size: contain;
     background-repeat: no-repeat;
     color:white;
-    padding: 30vw 10vw;
+    padding: 10vw 10vw;
 }
 
 #right-side {
@@ -25,7 +26,7 @@
     background-size: contain;
     background-repeat: no-repeat;
     color: white;
-    padding: 30vw 10vw;
+    padding: 10vw 10vw;
 }
 
 ::-webkit-scrollbar {
