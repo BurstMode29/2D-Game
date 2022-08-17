@@ -5,46 +5,56 @@ canvas.width = 1440
 canvas.height = 700
 ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-const gravity = 1
-
-
 //space background
-const background = new Sprite({
+const background = new Background({  
     position: {
         x: 0,
-        y: 0
+        y: -7930
     },
-    imageSrc: './img/Nebula Blue.png'
-})
-
-// red vortex animation
-var vortex = new Sprite({
-    position: {
-        x: 800,
-        y: 300
+    velocity: {
+        x: 0,
+        y: 2
     },
-    imageSrc: './img/vortex.png',
+    imageSrc: './img/bg.png',
     scale: 2,
-    framesMax: 8
 })
 
 
+// Obsticals
 var obstical = new Obstical({
     position: {
         x:500,
-        y:200
+        y:-300
     },
 
     velocity: {
         x: 0,
-        y: 0
+        y: 30
     },
+    
     imageSrc: './img/sunburn.png',
-    scale: 2,
-    framesMax: 8
-
+    scale: 3,
+    framesMax: 8,
 })
 
+var obstical1 = new Obstical({
+    position: {
+        x:700,
+        y:-500
+    },
+
+    velocity: {
+        x: 0,
+        y: 30
+    },
+    
+    imageSrc: './img/vortex.png',
+    scale: 2,
+    framesMax: 8,
+})
+
+
+// Panels
 var panel = new leftPanel ({
     position: {
         x: 0,
@@ -63,7 +73,7 @@ var panel1 = new rightPanel ({
 
 })
 
-//player ship
+//Player Spaceship
 const player = new Player ({
     position: {
         x:500,
@@ -74,45 +84,44 @@ const player = new Player ({
         x: 0,
         y: 0
     },
+
+    death: {
+        imageSrc: './img/death.png',
+        framesMax: 9
+        
+    }
 })
 player.draw()
 
-
-
  
-// function to draw on canvas
+//Draw on canvas
 function animate() {
     window.requestAnimationFrame(animate)
-
-    
-    ctx.fillStyle = "black"
-    ctx.fillRect(0, 0, canvas.width, canvas.height) 
     background.update()
-    vortex.update()
     obstical.update()
+    obstical1.update()
     player.update()
     panel.update()
     panel1.update()
+   
 
-  
-    if(player.position.x < 400) {
-        player.position.x = player.position.x + 5;
-    }   
+    if( player.position.x + player.width >= obstical.position.x &&
+        player.position.x <= obstical.position.x + obstical.width &&
+        player.position.y + player.height >= obstical.position.y && 
+        player.position.y <= obstical.position.y + obstical.height
+    )   {
+            console.log('you lose')
+            }
+
     
-   
-    if(player.position.y + player.height >= obstical.position.y && player.position.y <= obstical.position.y + obstical.height
-        && player.position.x + player.width >= obstical.position.x && player.position.x <= obstical.position.x + obstical.width) {
-        console.log('true');
-    }
 
-   
+    
 }
-
 animate();
 
 
 
-// movement keys
+// Action&Movement Keys
 window.addEventListener('keydown', (event) => {
     switch (event.key) {
             case 'ArrowRight':
@@ -154,5 +163,4 @@ window.addEventListener('keyup', (event) => {
     }
 
 })
-
 
