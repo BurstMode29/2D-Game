@@ -5,11 +5,22 @@ canvas.width = 1440
 canvas.height = 700
 ctx.fillRect(0, 0, canvas.width, canvas.height)
 
+let score = 0
+
+function drawScore() {
+    ctx.font = "30px Silkscreen";
+    ctx.fillStyle = "white";
+    ctx.fillText(`Score: ${score}`, 8, 20);
+    score += 1
+  }
+
+drawScore();
+
 //space background
 const background = new Background({  
     position: {
         x: 0,
-        y: -7930
+        y: -7900
     },
     velocity: {
         x: 0,
@@ -19,6 +30,12 @@ const background = new Background({
     scale: 2,
 })
 
+const health = new HealthBar({
+    position: {
+        x:0,
+        y:0
+    },
+});
 
 // Obsticals
 var obstical = new Obstical({
@@ -103,7 +120,7 @@ function animate() {
     player.update()
     panel.update()
     panel1.update()
-   
+    
 
     if( player.position.x + player.width >= obstical.position.x &&
         player.position.x <= obstical.position.x + obstical.width &&

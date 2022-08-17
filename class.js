@@ -38,13 +38,28 @@ class Background {
         
         if (this.position.y + this.height + this.velocity.y >= canvas.height) {
             this.velocity.y = 0
-        } 
+        }
 
         
     }
 }
 
 
+
+// Fuel/Health Bar 
+class HealthBar {
+    constructor({position}) {
+      
+    }
+
+    draw() {
+
+    }
+
+    update() {
+        
+    }
+}
 
 
 
@@ -97,7 +112,7 @@ class Obstical {
       this.position.y += this.velocity.y
       }
       
-
+  
       
     }
 }
@@ -117,6 +132,7 @@ class leftPanel {
     draw() {
         //ctx.fillStyle = 'red'
         //ctx.fillRect(this.position.x, this.position.y, 10, this.height)
+        ctx.fillText(`Score: ${score}`, 110, 100);
         ctx.drawImage(
             this.image,
             this.position.x,
@@ -131,6 +147,13 @@ class leftPanel {
 
         this.position.x 
         this.position.y 
+
+        if(player.position.x + player.width >= obstical.position.x &&
+            player.position.x <= obstical.position.x + obstical.width &&
+            player.position.y + player.height >= obstical.position.y && 
+            player.position.y <= obstical.position.y + obstical.height) {
+            return score += 1
+        }
         
         
     }
@@ -183,7 +206,8 @@ class Player {
         image.src = './img/ship-center.png'
         this.image = image
         this.frames = 0
-               
+        this.crash = true
+        
        
         
     }
@@ -218,17 +242,30 @@ class Player {
         } 
         
 
-        if(player.position.x < 390) {
+        if( player.position.x < 390) {
             player.position.x = player.position.x + 5;
         }
         
-        if(player.position.x > 995) {
+        if( player.position.x > 995) {
             player.position.x = player.position.x - 5;
         } 
         
-        if(player.position.y < 1) {
+        if( player.position.y < 1) {
             player.position.y = player.position.y + 5;
         }
+
+        if( player.position.y <= obstical.position.y &&
+            player.position.x <= obstical.position.x ) {
+            
+        }
+
+        if(player.position.x + player.width >= obstical.position.x &&
+            player.position.x <= obstical.position.x + obstical.width &&
+            player.position.y + player.height >= obstical.position.y && 
+            player.position.y <= obstical.position.y + obstical.height){
+                return player.velocity.y += 1000
+            }
+     
     }
 }
 
