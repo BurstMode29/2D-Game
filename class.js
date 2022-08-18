@@ -40,23 +40,9 @@ class Background {
             this.velocity.y = 0
         }
 
-        
-    }
-}
-
-
-
-// Fuel/Health Bar 
-class HealthBar {
-    constructor({position}) {
-      
-    }
-
-    draw() {
-
-    }
-
-    update() {
+        if(timer = 1000) {
+            return score = score += 1
+        }
         
     }
 }
@@ -117,6 +103,11 @@ class Obstical {
     }
 }
 
+
+//Health bar
+
+
+
 class leftPanel {
     constructor({position, velocity}) {
         this.position = position
@@ -132,7 +123,9 @@ class leftPanel {
     draw() {
         //ctx.fillStyle = 'red'
         //ctx.fillRect(this.position.x, this.position.y, 10, this.height)
-        ctx.fillText(`Score: ${score}`, 110, 100);
+        ctx.font = "30px Silkscreen";
+        ctx.fillStyle = "white";
+        ctx.fillText(`Score: ${score}`, 110, 70);
         ctx.drawImage(
             this.image,
             this.position.x,
@@ -147,13 +140,7 @@ class leftPanel {
 
         this.position.x 
         this.position.y 
-
-        if(player.position.x + player.width >= obstical.position.x &&
-            player.position.x <= obstical.position.x + obstical.width &&
-            player.position.y + player.height >= obstical.position.y && 
-            player.position.y <= obstical.position.y + obstical.height) {
-            return score += 1
-        }
+   
         
         
     }
@@ -189,7 +176,6 @@ class rightPanel {
         this.position.x 
         this.position.y 
         
-        
     }
 }
 
@@ -206,8 +192,7 @@ class Player {
         image.src = './img/ship-center.png'
         this.image = image
         this.frames = 0
-        this.crash = true
-        
+        this.health = 100
        
         
     }
@@ -259,13 +244,26 @@ class Player {
             
         }
 
-        if(player.position.x + player.width >= obstical.position.x &&
+        
+        if( player.position.x + player.width >= obstical.position.x &&
             player.position.x <= obstical.position.x + obstical.width &&
             player.position.y + player.height >= obstical.position.y && 
-            player.position.y <= obstical.position.y + obstical.height){
-                return player.velocity.y += 1000
-            }
-     
+            player.position.y <= obstical.position.y + obstical.height
+        )   {
+                player.health -= 3
+              return document.querySelector('#healthBar').style.width = player.health + '%'
+                }
+
+
+                if( player.position.x + player.width >= obstical1.position.x &&
+                    player.position.x <= obstical1.position.x + obstical1.width &&
+                    player.position.y + player.height >= obstical1.position.y && 
+                    player.position.y <= obstical1.position.y + obstical1.height
+                )   {
+                        player.health -= 3
+                       return document.querySelector('#healthBar').style.width = player.health + '%'
+                        }
+       
     }
 }
 
