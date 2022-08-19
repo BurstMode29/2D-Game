@@ -6,32 +6,36 @@
 
 }
 
-.healthBar {
-    border-radius: 5px;
-    height: 1.5vw;
-    width: 20vw;
-    top: 3.2vw;
-    right: 5vw;
-    background-color: rgb(158, 158, 158);
+
+/*Splash Screen*/
+#splash {
+    height: 100%;
+    width: 100%;
+    background-color: black;
     position: absolute;
+    z-index: 2;
+    visibility: hidden;
+    transition: visibility 0s 5s, opacity 60s linear;
+    justify-content: center;
     display: flex;
-    justify-content: right;
-    color: white;
+    align-items: center;
+}
+/*Splash Screen*/
+
+audio {
+    z-index: -1;
+    position: absolute;
 }
 
-#healthBar {
-    border-color: green;
+
+#health {
     border-style: solid;
-    border-radius: 5px;
-    height: 1.5vw;
+    position: absolute;
+    height: 3vw;
     width: 20vw;
     top: 3vw;
     right: 5vw;
-    background-color: lime;
-    position: absolute;
     color: white;
-    z-index: 1;
-    font-size: 1vw;
 }
 
 #gameCanvas{
@@ -50,3 +54,21 @@
     display: none;
 }
 
+#projectile {
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    background-color: red;
+    border-radius: 10px;
+    top: 200px;
+    right: 300px;
+
+    z-index: -1;
+
+}
+
+P {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,5 +1,7 @@
 // Background Image
 
+
+
 class Background {
     constructor({position, velocity, imageSrc, scale = 1, framesMax = 2}) {
         this.position = position
@@ -40,30 +42,35 @@ class Background {
             this.velocity.y = 0
         }
 
-        if(timer = 1000) {
-            return score = score += 1
-        }
+        if(score >= 3500) {
+            return background.velocity.y = 0
+        } 
+       
+
+      
         
     }
 }
 
 
 
+
+
 // Obstical 
 
 class Obstical {
-    constructor({position, velocity, imageSrc, scale = 1, framesMax = 2}) {
+    constructor({position, velocity, imageSrc, scale = 1, framesMax = 1}) {
         this.position = position
         this.velocity = velocity
-        this.height = 0
-        this.width = 0
+        this.height = 50
+        this.width = 50
         this.image = new Image()
         this.image.src = imageSrc
         this.scale = scale
         this.framesMax = framesMax
         this.framesCurrent = 0
         this.framesElapsed = 0
-        this.framesHold = 9
+        this.framesHold = 7
     }
 
     draw() {
@@ -179,8 +186,6 @@ class rightPanel {
     }
 }
 
-
-
 // Player 
 class Player {
     constructor({position, velocity}) {
@@ -194,6 +199,8 @@ class Player {
         this.frames = 0
         this.health = 100
        
+  
+       
         
     }
 
@@ -203,7 +210,7 @@ class Player {
             ctx.drawImage(
                 this.image,
                 0,
-                0.09 * this.frames,
+                0.01 * this.frames,
                 20,
                 37,
                 this.position.x,
@@ -245,27 +252,10 @@ class Player {
         }
 
         
-        if( player.position.x + player.width >= obstical.position.x &&
-            player.position.x <= obstical.position.x + obstical.width &&
-            player.position.y + player.height >= obstical.position.y && 
-            player.position.y <= obstical.position.y + obstical.height
-        )   {
-                player.health -= 3
-              return document.querySelector('#healthBar').style.width = player.health + '%'
-                }
-
-
-                if( player.position.x + player.width >= obstical1.position.x &&
-                    player.position.x <= obstical1.position.x + obstical1.width &&
-                    player.position.y + player.height >= obstical1.position.y && 
-                    player.position.y <= obstical1.position.y + obstical1.height
-                )   {
-                        player.health -= 3
-                       return document.querySelector('#healthBar').style.width = player.health + '%'
-                        }
-       
     }
 }
+
+
 
 
 
